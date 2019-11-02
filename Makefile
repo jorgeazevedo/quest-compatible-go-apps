@@ -3,3 +3,4 @@ all:
 	mkdir build
 	cp data.json build/data.json
 	cp index.html build/index.html
+	touch build/.nojekyll
