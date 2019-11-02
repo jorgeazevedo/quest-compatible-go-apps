@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Quest-compatible Go Apps</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-5 offset-md-4">
+          <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h3>Quest-compatible Go apps</h3>
+          </div>
+        </div>
+      </div>
+
+      <div v-for="app in apps" class="row">
+
+      <div class="col-md-4 offset-md-4">
+        <div class="card mb-4">
+	<img :src="app.image"class="card-img-top" :alt="app.name">
+          <div class="card-body">
+            <h5 class="card-title">{{ app.name }}</h5>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Rating</span><br>
+	      {{ app.ratingValue }}</p>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Price</span><br>
+	      ${{ app.price }}</p>
+	    </p>
+            <a :href="'https://www.oculus.com/experiences/go/' + app.id">Download</a>
+          </div>
+        </div>
+      </div>
+
+      </div>
+      
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+<script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+<script>
+  new Vue({
+  el: '.container',
+  data: {
+    apps: [{"id":"1211349205641781","name":"Air Combat (WW2)","image":"https://scontent.oculuscdn.com/v/t64.5771-25/12504808_220328411949501_6044257533781082112_n.png?_nc_cat=101&_nc_oc=AQnncwjUSEivI8Y6YXZ_tMXSxYq7bYTDQJqKI4GTNmGH10WiS7OWmxdXHj23wXy9uAE&_nc_ht=scontent.oculuscdn.com&oh=456412c43df4156c4c486bcf803c56b5&oe=5DDACAD6","price":"1.49","ratingValue":1.7878787878788}]
+  },
+  created: function() {
+    var that = this;
+
+    $.get("data.json", function(data) { that.apps = data });
+  }
+})
+
+</script>
+
+  </body>
+</html>
