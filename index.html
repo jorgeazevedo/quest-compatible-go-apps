@@ -2,10 +2,18 @@
 <html lang="en">
   <head>
     <title>Quest-compatible Go Apps</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <style>
+    .card-deck {
+    	display: grid;
+    	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    	grid-gap: .5rem;
+    }
+    </style>
   </head>
 
   <body>
@@ -18,11 +26,13 @@
           </div>
         </div>
       </div>
+      
+      <div class="row">
+      <div class="card-deck">
 
       <div v-for="app in apps" class="row">
 
-      <div class="col-md-4 offset-md-4">
-        <div class="card mb-4">
+        <div class="card">
 	<img :src="app.image"class="card-img-top" :alt="app.name">
           <div class="card-body">
             <h5 class="card-title">{{ app.name }}</h5>
@@ -36,6 +46,8 @@
             <a :href="'https://www.oculus.com/experiences/go/' + app.id">Download</a>
           </div>
         </div>
+
+      </div>
       </div>
 
       </div>
